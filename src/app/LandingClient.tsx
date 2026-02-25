@@ -80,7 +80,7 @@ const CONTENT = {
                     description: "Perfect for first-time idea submitters",
                     features: [
                         "1 idea submission",
-                        "500 character description",
+                        "300 character description",
                         "Real-time status tracking",
                         "Email notifications",
                     ],
@@ -94,7 +94,7 @@ const CONTENT = {
                     description: "For rapid iterations",
                     features: [
                         "Unlimited submissions",
-                        "2,000 character descriptions",
+                        "Unlimited character description",
                         "Priority development queue",
                         "Direct founder access",
                         "Rapid execution",
@@ -185,7 +185,7 @@ const CONTENT = {
                     description: "Cocok untuk percobaan pertama",
                     features: [
                         "1 kali kirim ide",
-                        "Deskripsi 500 karakter",
+                        "Deskripsi 300 karakter",
                         "Pelacakan status real-time",
                         "Notifikasi email",
                     ],
@@ -199,7 +199,7 @@ const CONTENT = {
                     description: "Untuk iterasi yang cepat",
                     features: [
                         "Kirim ide tak terbatas",
-                        "Deskripsi 2.000 karakter",
+                        "Deskripsi tak terbatas",
                         "Antrean prioritas",
                         "Akses langsung ke founder",
                         "Eksekusi super cepat",
@@ -369,8 +369,8 @@ export default function LandingClient() {
                                 key={plan.name}
                                 id={`pricing-${plan.name.toLowerCase()}`}
                                 className={`glass-card relative flex flex-col h-full ${plan.highlighted
-                                        ? "border-[#c8a2fe]/40 shadow-2xl shadow-[#9c6dfa]/20 scale-105 bg-[#0f1325]"
-                                        : "border-white/5 bg-[#0f1325]/50"
+                                    ? "border-[#c8a2fe]/40 shadow-2xl shadow-[#9c6dfa]/20 scale-105 bg-[#0f1325]"
+                                    : "border-white/5 bg-[#0f1325]/50"
                                     }`}
                             >
                                 {plan.highlighted && (
@@ -405,8 +405,8 @@ export default function LandingClient() {
                                 <button
                                     onClick={() => signIn("google")}
                                     className={`py-3.5 px-6 rounded-full font-semibold transition-all w-full mt-auto ${plan.highlighted
-                                            ? "btn-glow"
-                                            : "bg-[#1c223c] text-white hover:bg-[#252c4d]"
+                                        ? "btn-glow"
+                                        : "bg-[#1c223c] text-white hover:bg-[#252c4d]"
                                         }`}
                                     id={`pricing-cta-${plan.name.toLowerCase()}`}
                                 >

@@ -7,7 +7,7 @@
 export const GAS_API_URL = process.env.NEXT_PUBLIC_GAS_API_URL ?? "";
 
 /** Default character limit for idea descriptions */
-export const DEFAULT_CHAR_LIMIT = 500;
+export const DEFAULT_CHAR_LIMIT = 300;
 
 /** Admin email addresses (comma-separated in env) */
 export const ADMIN_EMAILS = (process.env.NEXT_PUBLIC_ADMIN_EMAILS ?? "")

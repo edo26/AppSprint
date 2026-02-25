@@ -49,7 +49,7 @@ const TEMPLATES = {
             data: {
                 title: "Online store for handmade crafts",
                 description:
-                    "A web app where craft sellers can list their handmade products with photos, pricing, and descriptions. Buyers can browse by category, add items to a cart, and checkout via integrated payment. Includes seller dashboard with order management and sales analytics.",
+                    "A web app for craft sellers to list handmade products with photos & prices. Buyers can browse, add to cart, and checkout. Includes a seller dashboard.",
                 target_user: "Craft sellers, artisan entrepreneurs, small business owners",
                 monetization: "5% transaction fee on each sale + optional premium seller plan at $9/mo",
             },
@@ -62,7 +62,7 @@ const TEMPLATES = {
             data: {
                 title: "Appointment booking for freelance barbers",
                 description:
-                    "A scheduling web app where freelance barbers can manage their availability and clients can book time slots. Features include calendar sync, automated reminders via WhatsApp/email, client history, and a simple CRM to track repeat customers.",
+                    "Scheduling web app for freelance barbers to manage availability and let clients book slots. Features: calendar sync, WhatsApp reminders, and a simple CRM.",
                 target_user: "Freelance barbers, mobile hairdressers, beauty professionals",
                 monetization: "Freemium — free for up to 30 bookings/month, $12/mo for unlimited",
             },
@@ -75,7 +75,7 @@ const TEMPLATES = {
             data: {
                 title: "Analytics dashboard for content creators",
                 description:
-                    "A unified dashboard that pulls metrics from YouTube, Instagram, and TikTok into one view. Creators can see engagement rates, follower trends, top-performing content, and revenue estimates. Includes weekly email reports and goal tracking widgets.",
+                    "A unified dashboard to pull metrics from YouTube, IG, and TikTok into one view. See engagement, follower trends, revenue estimates, and weekly email reports.",
                 target_user: "YouTubers, Instagram influencers, TikTok creators, social media managers",
                 monetization: "SaaS subscription — $15/mo for individuals, $49/mo for agencies",
             },
@@ -90,7 +90,7 @@ const TEMPLATES = {
             data: {
                 title: "Toko online untuk kerajinan tangan",
                 description:
-                    "Web app dimana penjual kerajinan bisa menampilkan produk buatan tangan dengan foto, harga, dan deskripsi. Pembeli bisa telusuri berdasarkan kategori, tambahkan ke keranjang, dan checkout via pembayaran terintegrasi. Termasuk dasbor penjual dengan manajemen pesanan dan analitik penjualan.",
+                    "Web app untuk penjual kerajinan menampilkan produk dengan foto & harga. Pembeli telusuri kategori, tambah ke keranjang, & checkout. Ada dasbor penjual.",
                 target_user: "Penjual kerajinan, pengusaha artisan, pemilik bisnis kecil",
                 monetization: "Biaya transaksi 5% per penjualan + opsi paket premium penjual Rp 99rb/bln",
             },
@@ -103,7 +103,7 @@ const TEMPLATES = {
             data: {
                 title: "Booking jadwal untuk barbershop freelance",
                 description:
-                    "Web app penjadwalan dimana tukang cukur freelance bisa mengatur ketersediaan dan klien bisa booking slot waktu. Fitur termasuk sinkronisasi kalender, pengingat otomatis via WhatsApp/email, riwayat klien, dan CRM sederhana untuk melacak pelanggan setia.",
+                    "Web app penjadwalan barbershop freelance. Klien bisa booking slot waktu. Fitur: sinkronisasi kalender, pengingat WhatsApp, dan CRM pelanggan sederhana.",
                 target_user: "Barbershop freelance, penata rambut keliling, profesional kecantikan",
                 monetization: "Freemium — gratis hingga 30 booking/bulan, Rp 99rb/bln untuk tak terbatas",
             },
@@ -116,7 +116,7 @@ const TEMPLATES = {
             data: {
                 title: "Dasbor analitik untuk konten kreator",
                 description:
-                    "Dasbor terpadu yang mengambil metrik dari YouTube, Instagram, dan TikTok ke dalam satu tampilan. Kreator bisa melihat tingkat engagement, tren follower, konten performa terbaik, dan estimasi pendapatan. Termasuk laporan email mingguan dan widget pelacakan target.",
+                    "Dasbor terpadu metrik dari YouTube, IG, & TikTok. Lihat tingkat engagement, tren follower, & estimasi pendapatan. Ada laporan mingguan.",
                 target_user: "YouTuber, influencer Instagram, kreator TikTok, manajer media sosial",
                 monetization: "Langganan SaaS — Rp 149rb/bln untuk individu, Rp 499rb/bln untuk agensi",
             },
@@ -183,7 +183,7 @@ export default function SubmitForm({ userEmail }: SubmitFormProps) {
     const [form, setForm] = useState<FormData>(INITIAL_STATE);
     const [loading, setLoading] = useState(false);
     const [checkingExisting, setCheckingExisting] = useState(true);
-    const [charLimit, setCharLimit] = useState(500);
+    const [charLimit, setCharLimit] = useState(300);
     const [activeTemplate, setActiveTemplate] = useState<number | null>(null);
 
     const t = SUBMIT_T[lang];
@@ -327,8 +327,8 @@ export default function SubmitForm({ userEmail }: SubmitFormProps) {
                                 type="button"
                                 onClick={() => isActive ? clearTemplate() : applyTemplate(i)}
                                 className={`relative text-left p-4 rounded-xl border transition-all duration-300 group ${isActive
-                                        ? "bg-[#9c6dfa]/10 border-[#9c6dfa]/40 ring-1 ring-[#9c6dfa]/20"
-                                        : "bg-[#141829] border-white/[0.06] hover:border-white/15"
+                                    ? "bg-[#9c6dfa]/10 border-[#9c6dfa]/40 ring-1 ring-[#9c6dfa]/20"
+                                    : "bg-[#141829] border-white/[0.06] hover:border-white/15"
                                     }`}
                             >
                                 <div className="flex items-center gap-3 mb-2">
@@ -401,10 +401,10 @@ export default function SubmitForm({ userEmail }: SubmitFormProps) {
                         <div className="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
                             <div
                                 className={`h-full rounded-full transition-all duration-300 ${descProgress > 90
-                                        ? "bg-red-500"
-                                        : descProgress > 70
-                                            ? "bg-yellow-500"
-                                            : "bg-[#9c6dfa]"
+                                    ? "bg-red-500"
+                                    : descProgress > 70
+                                        ? "bg-yellow-500"
+                                        : "bg-[#9c6dfa]"
                                     }`}
                                 style={{ width: `${Math.min(descProgress, 100)}%` }}
                             />
