@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-peach: #fce2c2;
+    --bg-light-purple: #c8a2fe;
+    --bg-mid-purple: #9c6dfa;
+    --bg-dark-blue: #1c223c;
+    --bg-very-dark: #0f1325;
+
+    --text-dark: #12101e;
+    --text-light: #ffffff;
+    --text-muted: #a1a1aa;
+
+    --glow-purple: rgba(156, 109, 250, 0.6);
+  }
+
+  body {
+    background-color: var(--bg-very-dark);
+    color: var(--text-light);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+
+  /* ── Gradient text ──────────────────────────── */
+  .gradient-text {
+    background: linear-gradient(135deg, #c8a2fe 0%, #9c6dfa 50%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ── Hero gradient ──────────────────────────── */
+  .hero-gradient {
+    position: relative;
+    background-color: var(--bg-very-dark);
+    overflow: hidden;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -20%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle at 30% 30%, var(--bg-peach) 0%, var(--bg-light-purple) 25%, var(--bg-mid-purple) 45%, var(--bg-dark-blue) 75%, transparent 90%);
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .text-dark-hero {
+    color: var(--text-dark);
+  }
+
+  /* ── Buttons ────────────────────────────────── */
+  .btn-pill {
+    @apply rounded-full font-medium transition-all duration-300;
+  }
+
+  .btn-dark {
+    @apply bg-[#0b0f19] text-white hover:bg-black border border-white/5;
+  }
+
+  .btn-glow {
+    @apply bg-[#0b0f19] text-white border border-white/10 relative;
+    box-shadow: 0 0 20px 2px var(--glow-purple);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px 4px var(--glow-purple);
+    @apply bg-black;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#9c6dfa] to-[#7c3aed] text-white font-semibold px-6 py-3 transition-all duration-300 hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 text-white font-medium px-6 py-3 hover:bg-white/10 transition-all duration-300;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 25px 3px var(--glow-purple);
+  }
+
+  .glow-primary-sm {
+    box-shadow: 0 0 15px 2px rgba(156, 109, 250, 0.3);
+  }
+
+  /* ── Cards ──────────────────────────────────── */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6;
+  }
+
+  .card {
+    @apply bg-[#141829] border border-white/[0.06] rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .card:hover {
+    border-color: rgba(156, 109, 250, 0.15);
+  }
+
+  /* ── Input fields ───────────────────────────── */
+  .input-field {
+    @apply w-full bg-[#0f1325] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 outline-none transition-all duration-200;
+  }
+
+  .input-field:focus {
+    border-color: rgba(156, 109, 250, 0.5);
+    box-shadow: 0 0 0 3px rgba(156, 109, 250, 0.1);
+  }
+
+  .input-field:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* ── Badge ──────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full;
+  }
+
+  /* ── Concentric circles ─────────────────────── */
+  .concentric-circle {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  /* ── Floating avatars ───────────────────────── */
+  .floating-avatar {
+    position: absolute;
+    @apply w-10 h-10 rounded-full bg-[#0b0f19] border border-white/10 flex items-center justify-center p-0.5 overflow-hidden transition-all duration-500 hover:scale-110;
+    box-shadow: 0 0 15px 1px rgba(156, 109, 250, 0.4);
+  }
+
+  .floating-avatar-lg {
+    @apply w-12 h-12;
+    box-shadow: 0 0 25px 2px rgba(255, 120, 150, 0.3);
+  }
+
+  /* ── Animations ─────────────────────────────── */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-medium {
+    animation: float 4s ease-in-out infinite reverse;
+  }
+
+  .float-fast {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(2deg);
+    }
+
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+
+  /* ── Step indicator ─────────────────────────── */
+  .step-dot {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2 transition-all duration-300;
+  }
+
+  .step-dot-active {
+    @apply border-[#9c6dfa] bg-[#9c6dfa]/20 text-[#c8a2fe];
+  }
+
+  .step-dot-done {
+    @apply border-green-400 bg-green-400/20 text-green-400;
+  }
+
+  .step-dot-pending {
+    @apply border-zinc-700 bg-zinc-900 text-zinc-600;
+  }
+}
