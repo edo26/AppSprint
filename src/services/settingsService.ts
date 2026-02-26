@@ -14,7 +14,7 @@ import type { AppSettings, Setting, ApiResponse } from "@/types";
 
 /** Default settings used when no settings are stored */
 const DEFAULT_SETTINGS: AppSettings = {
-    char_limit: 500,
+    char_limit: 300,
     max_free_submissions: 1,
     pricing_free: "Free",
     pricing_pro: "$29/mo",
@@ -47,7 +47,7 @@ export class SettingsService implements ISettingsService {
             );
 
             const parsed: AppSettings = {
-                char_limit: parseInt(settingsMap.char_limit ?? "500", 10),
+                char_limit: parseInt(settingsMap.char_limit ?? "300", 10),
                 max_free_submissions: parseInt(
                     settingsMap.max_free_submissions ?? "1",
                     10

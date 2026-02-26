@@ -94,7 +94,7 @@ const CONTENT = {
                     description: "For rapid iterations",
                     features: [
                         "Unlimited submissions",
-                        "Unlimited character description",
+                        "2,000 character descriptions",
                         "Priority development queue",
                         "Direct founder access",
                         "Rapid execution",
@@ -199,7 +199,7 @@ const CONTENT = {
                     description: "Untuk iterasi yang cepat",
                     features: [
                         "Kirim ide tak terbatas",
-                        "Deskripsi tak terbatas",
+                        "Deskripsi 2.000 karakter",
                         "Antrean prioritas",
                         "Akses langsung ke founder",
                         "Eksekusi super cepat",
