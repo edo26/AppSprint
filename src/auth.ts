@@ -6,6 +6,7 @@
 
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import Credentials from "next-auth/providers/credentials";
 import { userService } from "@/lib/container";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -13,6 +14,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         Google({
             clientId: process.env.GOOGLE_CLIENT_ID ?? "",
             clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+        }),
+        Credentials({
+            name: "Admin Login",
+            credentials: {
+                username: { label: "Username", type: "text" },
+                password: { label: "Password", type: "password" },
+            },
+            async authorize(credentials) {
+                if (
+                    credentials?.username === process.env.ADMIN_USERNAME &&
+                    credentials?.password === process.env.ADMIN_PASSWORD
+                ) {
+                    // Inject the primary admin email as the user email so the app recognizes them as an admin natively
+                    const admins = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || "").split(",");
+                    return {
+                        id: "admin-system",
+                        name: "Admin",
+                        email: admins[0] || "admin@appsprint.local",
+                    };
+                }
+                return null;
+            },
         }),
     ],
 
@@ -23,8 +46,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
          * @param user - The authenticated user object from the provider
          * @returns true to allow sign-in, false to block
          */
-        async signIn({ user }) {
-            if (user.email && user.name) {
+        async signIn({ user, account }) {
+            // Only attempt to register the user in Google Sheets if they're signing in via Google
+            if (account?.provider === "google" && user.email && user.name) {
                 try {
                     await userService.registerUser({
                         name: user.name,
@@ -69,6 +93,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     pages: {
-        signIn: "/",
+        signIn: "/login",
     },
 });

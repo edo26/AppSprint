@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { signIn } from "next-auth/react";
+import { ROUTES } from "@/lib/constants";
 import {
     ArrowRight,
     Check,
@@ -198,7 +200,7 @@ const CONTENT = {
                     period: "per bulan",
                     description: "Untuk iterasi yang cepat",
                     features: [
-                        "Kirim ide tak terbatas",
+                        "Kirim ide baru atau revisi 10x",
                         "Deskripsi 2.000 karakter",
                         "Antrean prioritas",
                         "Akses langsung ke founder",
@@ -216,7 +218,7 @@ const CONTENT = {
                         "Semua fitur Pro",
                         "Strategi eksekusi khusus",
                         "SLA Khusus",
-                        "Akses API",
+                        "Source code diberikan",
                         "Dukungan prioritas",
                     ],
                     cta: "Hubungi Sales",
@@ -252,14 +254,14 @@ export default function LandingClient() {
                         </h1>
 
                         <div className="flex items-center gap-4 fade-in">
-                            <button
+                            <Link
                                 id="hero-start-btn"
-                                onClick={() => signIn("google")}
+                                href="/login"
                                 className="btn-pill btn-dark text-[15px] px-8 py-4 flex items-center gap-2 group"
                             >
                                 {content.hero.ctaBtn}
                                 <ArrowRight className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" />
-                            </button>
+                            </Link>
                         </div>
 
                         <div className="mt-6 flex items-center fade-in">
@@ -402,16 +404,16 @@ export default function LandingClient() {
                                     ))}
                                 </ul>
 
-                                <button
-                                    onClick={() => signIn("google")}
-                                    className={`py-3.5 px-6 rounded-full font-semibold transition-all w-full mt-auto ${plan.highlighted
-                                        ? "btn-glow"
-                                        : "bg-[#1c223c] text-white hover:bg-[#252c4d]"
+                                <Link
+                                    href="/login"
+                                    className={`w-full py-3.5 px-6 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${plan.highlighted
+                                        ? "bg-white text-black hover:bg-zinc-200"
+                                        : "bg-white/5 text-white hover:bg-white/10"
                                         }`}
-                                    id={`pricing-cta-${plan.name.toLowerCase()}`}
                                 >
                                     {plan.cta}
-                                </button>
+                                    <ArrowRight className="w-4 h-4 opacity-70" />
+                                </Link>
                             </div>
                         ))}
                     </div>

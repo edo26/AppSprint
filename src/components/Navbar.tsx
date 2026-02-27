@@ -94,20 +94,20 @@ export default function Navbar() {
                         </div>
                     ) : (
                         <>
-                            <button
-                                onClick={() => signIn("google")}
+                            <Link
+                                href="/login"
                                 className="text-white hover:text-zinc-200 transition-colors"
                                 id="nav-login-btn"
                             >
                                 {t.login}
-                            </button>
-                            <button
-                                onClick={() => signIn("google")}
+                            </Link>
+                            <Link
+                                href="/login"
                                 className="btn-pill btn-glow py-2.5 px-7"
                                 id="nav-join-btn"
                             >
                                 {t.join}
-                            </button>
+                            </Link>
                         </>
                     )}
                 </div>
@@ -146,12 +146,12 @@ export default function Navbar() {
                             <button onClick={() => signOut({ callbackUrl: ROUTES.HOME })} className="text-left text-zinc-400 font-medium text-lg">{t.signout}</button>
                         </>
                     ) : (
-                        <button
-                            onClick={() => signIn("google")}
+                        <Link
+                            href="/login"
                             className="text-left text-white font-bold text-lg"
                         >
                             {t.login} / {t.join}
-                        </button>
+                        </Link>
                     )}
                 </div>
             )}
